@@ -9,7 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+//外部化配置API Key
+builder.Configuration
+    .AddJsonFile(
+        "Keys/apikey.json",
+        optional: false,
+        reloadOnChange: true);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
