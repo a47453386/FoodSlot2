@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.home-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 背景 */
+
+.table-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* 木牌 */
+
+.wooden-sign {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 180px;
+    z-index: 10;
+}
+
+/* 拉霸機 */
+
+.slot-machine {
+    position: absolute;
+    left: 300px;
+    top: 0px;
+    width: 650px;
+    z-index: 10;
+}
+
+/* 拉霸畫面 */
+
+.slot-screen {
+    position: absolute;
+    left: 450px;
+    top: 116px;
+    width: 325px;
+    height: 325px;
+    overflow: hidden;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+/* 狀態 A：拉霸滾動容器 */
+.slot-reel-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.slot-reel {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 單一圖片 */
+
+.slot-item {
+    width: 325px;
+    height: 325px;
+    flex-shrink: 0;
+}
+
+    .slot-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 保持圖片比例不變形，且完整秀出 */
+        display: block;
+    }
+
+/* 狀態 B：Google 地圖（100% 貼合拉霸機螢幕，預設先隱藏） */
+.google-map-screen {
+    width: 100%;
+    height: 100%;
+    display: none; /* 之後由 JS 切換為 display: block */
+}
+
+/* 拉霸按鈕 */
+.slot-button {
+    position: absolute;
+    left: 355px;
+    top: 500px;
+    width: 500px;
+    z-index: 30;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    /* 讓浮起與變亮的效果有 0.2 秒的滑順過渡 */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+    /* 裡面的圖片寬度撐滿 */
+    .slot-button img {
+        width: 100%;
+        display: block;
+    }
+
+    /* Hover 效果：變亮 1.2 倍 ＋ 向上浮起 5 像素  */
+    .slot-button:hover {
+        filter: brightness(1.25) drop-shadow(0 5px 10px rgba(0,0,0,0.8));
+        transform: translateY(-3px);
+    }
+
+    /* 點擊時的下壓反饋（選用，體驗更好） */
+    .slot-button:active {
+        transform: translateY(-1px);
+        filter: brightness(1.1);
+    }
+
+/* 羊皮紙 */
+
+.parchment {
+    position: absolute;
+    right: 120px;
+    top: 70px;
+    width: 400px;
+    z-index: 10;
+}
+
+/* 獎池/結果內容區外框（限制在羊皮紙中央空白處） */
+.pool-area {
+    position: absolute;
+    right: 175px;
+    top: 155px;
+    width: 290px;
+    height: 380px;
+    z-index: 20;
+}
+
+/* 滾動控制條容器 */
+.pool-scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* 垂直超出時自動顯示捲軸 */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px; /* 每個獎項/餐廳之間的上下間距 */
+    padding-bottom: 20px;
+}
+
+    /* 客製化羊皮紙滾動條样式（讓原生的醜捲軸消失或變美） */
+    .pool-scroll-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .pool-scroll-container::-webkit-scrollbar-thumb {
+        background: #b5885c; /* 木質調咖啡色 */
+        border-radius: 999px;
+    }
+
+/* 單一獎項 / 餐廳卡片樣式 */
+.pool-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.2s ease;
+    gap: 10px;
+}
+
+    /* 內容圖片 */
+    .pool-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* 內容文字 */
+    .pool-item p {
+        margin: 6px 0 0 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: #5b3417; /* 古風深咖啡色 */
+    }
