@@ -1,8 +1,61 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "_HomeLayout";
+
+    ViewData["Title"] = "食運拉霸";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles {
+
+    <link rel="stylesheet"
+          href="~/css/home/index.css" />
+
+}
+
+<div class="home-page">
+
+    <!-- 背景 -->
+    <img class="table-bg"
+         src="~/images/table-bg.png"
+         alt="背景" />
+
+    <!-- 木牌 -->
+    <img class="wooden-sign"
+         src="~/images/wooden-sign.png"
+         alt="食運拉霸" />
+
+    <!-- 拉霸機 -->
+    <img class="slot-machine"
+         src="~/images/slot-machine.png"
+         alt="拉霸機" />
+
+    <!-- 拉霸畫面 -->
+    <div class="slot-screen">
+
+        <div id="slotReelContainer" class="slot-reel-container">
+            <div id="slotReel" class="slot-reel">
+            </div>
+        </div>
+        <div id="googleMap" class="google-map-screen"></div>
+    </div>
+
+    <!-- 拉霸按鈕 -->
+    <button id="drawButton" class="slot-button">
+        <img src="~/images/slot-button.png" alt="開始抽籤" />
+    </button>
+
+    <!-- 羊皮紙 -->
+    <img class="parchment"
+         src="~/images/parchment.png"
+         alt="羊皮紙" />
+
+    <!-- 獎池與搜尋結果 -->
+    <div id="poolArea" class="pool-area">
+        <div id="poolScrollContainer" class="pool-scroll-container">
+        </div>
+    </div>
+
 </div>
+
+@section Scripts {
+    <script src="~/js/home/draw.js"></script>
+}

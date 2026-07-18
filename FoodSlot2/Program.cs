@@ -1,10 +1,11 @@
-﻿using FoodSlot2.Models;
+﻿using FoodSlot2.Services.Interfaces;
+using FoodSlot2.Models;
 using FoodSlot2.Seed;
 using FoodSlot2.Seed.Data;
-
+using FoodSlot2.Services.APIResultService;
 using FoodSlot2.Services.ImageUploadServices;
 using FoodSlot2.Services.Interface;
-
+using FoodSlot.Services.SlotService;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -26,7 +27,8 @@ builder.Services.AddDbContext<FoodSlotContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FoodSlotConnection")));
 //註冊服務
 builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
-
+builder.Services.AddScoped<IAPIResultService, APIResultService>();
+builder.Services.AddScoped<IDrawService, DrawService>();
 
 //註冊種子資料
 builder.Services.AddScoped<SeedRunner>();
